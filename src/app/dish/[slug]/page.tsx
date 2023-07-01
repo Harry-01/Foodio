@@ -1,12 +1,10 @@
-import { FC } from "react";
-import { PageProps } from "../../../../.next/types/app/layout";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { notFound } from "next/navigation";
 import MiniCreatePost from "@/components/MiniCreatePost";
 
-interface pageProps {
+interface PageProps {
   params: {
     slug: string;
   };
@@ -36,6 +34,7 @@ const page = async ({ params }: PageProps) => {
     <>
       <h1 className="bold-bold text-3xl md:text-4xl h-14">dish/{dish.name}</h1>
       <MiniCreatePost session={session}/>
+      <PostFeed />
     </>
   );
 };

@@ -1,7 +1,9 @@
 import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle";
+import { buttonVariants } from "@/components/ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { format } from "date-fns";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const layout = async ({
@@ -86,6 +88,15 @@ const layout = async ({
                 {dish.creatorId !== session?.user.id ? (
                     <SubscribeLeaveToggle isSubscribed={isSubscribed} dishId={dish.id} dishName={dish.name} />
                 ): null}
+
+                <Link className={buttonVariants({
+                    variant: 'outline',
+                    className: 'w-full mb-6',
+                })}
+                href={`dish/${slug}/submit`}
+                >
+                    Create Post
+                </Link>
               </dl>
             </div>
           
