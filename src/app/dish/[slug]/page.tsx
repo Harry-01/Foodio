@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { notFound } from "next/navigation";
 import MiniCreatePost from "@/components/MiniCreatePost";
+import PostFeed from "@/components/PostFeed";
 
 interface PageProps {
   params: {
@@ -24,6 +25,9 @@ const page = async ({ params }: PageProps) => {
           comments: true,
           dish: true,
         },
+        orderBy: {
+          createdAt: 'desc',
+        },
         take: INFINITE_SCROLLING_PAGINATION_RESULTS,
       },
     },
@@ -34,7 +38,7 @@ const page = async ({ params }: PageProps) => {
     <>
       <h1 className="bold-bold text-3xl md:text-4xl h-14">dish/{dish.name}</h1>
       <MiniCreatePost session={session}/>
-      <PostFeed />
+      <PostFeed initialPosts={dish.posts} dishName={dish.name}/>
     </>
   );
 };

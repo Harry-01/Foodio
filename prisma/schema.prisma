@@ -106,7 +106,7 @@ model Post {
   id       String   @id @default(cuid())
   title    String
   content  Json?
-  CreateAt DateTime @default(now())
+  createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
   dish     Dish     @relation(fields: [dishId], references: [id])
   dishId   String
@@ -138,7 +138,7 @@ model Comment {
 
 enum VoteType {
   UP
-  Down
+  DOWN
 }
 
 model Vote {
