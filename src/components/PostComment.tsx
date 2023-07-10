@@ -1,20 +1,19 @@
 "use client";
-import { FC, useRef, useState } from "react";
-import UserAvatar from "./UserAvatar";
-import { Comment, CommentVote, User } from "@prisma/client";
+import { toast } from "@/hooks/use-toast";
 import { formatTimeToNow } from "@/lib/utils";
-import CommentVotes from "./CommentVotes";
-import { getAuthSession } from "@/lib/auth";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { Button } from "./ui/Button";
-import { MessageSquare } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
 import { CommentRequest } from "@/lib/validators/comment";
+import { Comment, CommentVote, User } from "@prisma/client";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { MessageSquare } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { FC, useRef, useState } from "react";
+import CommentVotes from "./CommentVotes";
+import UserAvatar from "./UserAvatar";
+import { Button } from "./ui/Button";
 import { Label } from "./ui/Label";
 import { Textarea } from "./ui/Textarea";
-import { toast } from "@/hooks/use-toast";
 
 type ExtendedComment = Comment & {
   votes: CommentVote[];

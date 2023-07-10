@@ -1,6 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { DishSubscriptionValidator, DishValidator } from "@/lib/validators/dish";
+import { DishValidator } from "@/lib/validators/dish";
 import { z } from "zod";
 
 export async function POST(req: Request) {

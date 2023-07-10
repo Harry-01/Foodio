@@ -1,7 +1,6 @@
 import { getAuthSession } from '@/lib/auth'
 import { Post, Vote, VoteType } from '@prisma/client'
 import { notFound } from 'next/navigation'
-import { FC } from 'react'
 import PostVoteClient from './PostVoteClient'
 
 interface PostVoteServerProps {

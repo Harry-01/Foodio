@@ -1,16 +1,15 @@
 'use client'
 import { useCustomToast } from '@/hooks/use-custom-toast'
+import { toast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
+import { PostVoteRequest } from '@/lib/validators/vote'
 import { usePrevious } from '@mantine/hooks'
-import { ArrowBigUp } from 'lucide-react'
+import { VoteType } from '@prisma/client'
+import { useMutation } from '@tanstack/react-query'
+import axios, { AxiosError } from 'axios'
+import { ArrowBigDown, ArrowBigUp } from 'lucide-react'
 import { FC, useEffect, useState } from 'react'
 import { Button } from '../ui/Button'
-import { VoteType } from '@prisma/client'
-import { ArrowBigDown } from 'lucide-react'
-import { useMutation } from '@tanstack/react-query'
-import { PostVoteRequest, PostVoteValidator } from '@/lib/validators/vote'
-import axios, { AxiosError } from 'axios'
-import { toast } from '@/hooks/use-toast'
 
 interface PostVoteClientProps {
   postId: string

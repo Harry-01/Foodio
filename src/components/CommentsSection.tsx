@@ -1,18 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { FC, useState } from "react";
-import PostComment from "./PostComment";
 import CreateComment from "./CreateComment";
-import { MessageSquare } from "lucide-react";
-import { Button } from "./ui/Button";
-import { useRouter } from "next/navigation";
-import { boolean } from "zod";
-import { Label } from "./ui/Label";
-import { Textarea } from "./ui/Textarea";
-import { useSession } from "next-auth/react";
-import { useMutation } from "@tanstack/react-query";
-import { CommentRequest } from "@/lib/validators/comment";
-import axios from "axios";
+import PostComment from "./PostComment";
 
 interface CommentsSectionProps {
   postId: string;

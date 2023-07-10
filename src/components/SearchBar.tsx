@@ -1,15 +1,14 @@
 "use client"
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
-import { Command, CommandInput, CommandItem, CommandList } from './ui/Command'
+import { useOnClickOutside } from '@/hooks/use-on-click-outside'
+import { Dish, Prisma } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { CommandEmpty, CommandGroup } from 'cmdk'
-import { usePathname, useRouter } from 'next/navigation'
-import { Dish, Prisma } from '@prisma/client'
-import { User } from 'lucide-react'
-import { request } from 'http'
 import debounce from 'lodash.debounce'
-import { useOnClickOutside } from '@/hooks/use-on-click-outside'
+import { User } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { Command, CommandInput, CommandItem, CommandList } from './ui/Command'
 
 interface SearchBarProps {
   
@@ -44,6 +43,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
     const debounceRequest = useCallback(() => {
         request()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const router = useRouter()
